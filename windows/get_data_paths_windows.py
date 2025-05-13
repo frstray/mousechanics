@@ -3,11 +3,11 @@ def get_subfolders(main_folder):
 	Gets a list of subfolders stored within a specified folder
 	
 	Arguments:
-	- main_folder: string, this is the path to the main folder that contains the subfolders
+	- main_folder (string): this is the path to the main folder that contains the subfolders
 	you want to get the paths of
 
 	Returns:
-	- folder_paths: list of strings, this is a list containing the full path to each subfolder 
+	- folder_paths (list of strings): this is a list containing the full path to each subfolder 
 	"""
 	import os 
 
@@ -33,13 +33,13 @@ def get_subfolder_data_paths(subfolder, file_type='none'):
 	Gets a list of paths to each set of data in a subfolder
 
 	Arguments:
-	- subfolder: string, path to the subfolder with the data you want the paths of
-	- file_type: string, specifies a file type
+	- subfolder (string): path to the subfolder with the data you want the paths of
+	- file_type (string): specifies a file type
 		- by default, this value is none and all files will be returned regardless of type 
 		- example args: '.csv', '.mp4', '.h5'
 
 	Returns:
-	- data_paths: a list containing the full paths to each data file 
+	- data_paths (list of strings): a list containing the full paths to each data file 
 
 	"""
 	import os
@@ -64,12 +64,12 @@ def get_data_from_main(main_folder, file_type='none'):
 	and the values are the data file paths
 
 	Arguments:
-	- main_folder: string, path to main folder (data directory)
-	- file_type: string, specifies the file type
+	- main_folder (string): path to main folder (data directory)
+	- file_type   (string): specifies the file type
 		- default value is none, and all file types will be returned 
 
 	Returns:
-	- grouped_data: dictionary, a dictionary where the keys are the subfolder paths and the values are lists of data paths 
+	- grouped_data (dictionary): a dictionary where the keys are the subfolder paths and the values are lists of data paths 
 	"""
 	subfolders = get_subfolders(main_folder) # gets the paths to all subfolders in the main folder
 		

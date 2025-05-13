@@ -2,7 +2,7 @@
 velocity.py
 
 Forest Ray
-April 24, 2025
+May 13, 2025
 
 This module contains functions related to velocity computations in Mousechanics 
 """
@@ -13,15 +13,16 @@ def calculate_velocity(time, x_position, y_position):
 	Calculates velocity for a list of coordinates defined by x position, y position, and time
 
 	Arguments:
-	- time: list, contains the time at which a coordinate is recorded 
-	- x_position: list, x-values for each coordinate
-	- y_position: list, y_values for each coordinate 
+	- time       (list of floats): contains the time at which a coordinate is recorded 
+	- x_position (list of floats): x-values for each coordinate
+	- y_position (list of floats): y_values for each coordinate 
 
 	Returns: 
-	- velocities: list containing the average velocity between each pair of consecutive positions
-	- times: the times that correspond to each velocity point
+	- velocities (list of floats): list containing the average velocity between each pair of consecutive positions
+	- times      (list of floats): the times that correspond to each velocity point
 	"""
 
+	# create lists to store the time and velocity values that will be returned 
 	times = []
 	velocities = []
 
@@ -49,9 +50,9 @@ def average_velocity(time_window, velocities, times):
 	Calculates the average velocity for each user specified time window 
 
 	Arguments:
-	- time_window: integer, size of the time window in seconds
-	- velocities: list, velocities for each time point
-	- times: list, time at which each velocity measurement occurs 
+	- time_window (integer):        size of the time window in seconds
+	- velocities  (list of floats): velocities for each time point
+	- times       (list of floats): time at which each velocity measurement occurs 
 	"""
 
 	num_data_points = len(velocities)
@@ -62,7 +63,7 @@ def average_velocity(time_window, velocities, times):
 	elif (num_data_points == len(times)):
 		num_windows = int((int(times[-1]))/time_window) # max time / size of window (both in seconds) = # windows
 
-	 	# these lists will hold the average velocity in each time window and the time corresponding to that average
+	# these lists will hold the average velocity in each time window and the time corresponding to that average
     	# the last time stamp in the time window is considered to be the time corresponding to the average velocity 
     	average_velocities = []
     	time_for_average = []

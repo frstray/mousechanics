@@ -12,3 +12,11 @@ Much of my code is developed in JupyterLab before I write it into python scripts
 
 Contact:
 haray@augusta.edu 
+
+# How it works
+## Finding Velocity
+![velocity](https://github.com/frstray/mousechanics/blob/main/readme_assets/Slide2.jpg)
+
+## Finding Orientation
+![orientation exp1](https://github.com/frstray/mousechanics/blob/main/readme_assets/Slide3.jpg)
+![orientation exp2](https://github.com/frstray/mousechanics/blob/main/readme_assets/Slide4.jpg)

@@ -9,16 +9,16 @@ Calculates the orientation of the mouse with respect to the entire arena.
 If the mouse was pointing directly right, with the front more right than the back,
 the orientation would be 0. Orientation goes from 0 to 2pi as the mouse turns counter clockwise. 
 
-		          pi/2
-			        ^
-		 	        |
-   			        |
-      			    |
+		      pi/2
+			^
+		 	|
+   			|
+      			|
 	       pi <-----|-----> 0
-    			    |
-    			    |
-       			    |
-	  		        v
+    			|
+    			|
+       			|
+	  		v
      		      3pi/4
 
 - mouse pointing front first to right: angle = 0
@@ -30,7 +30,7 @@ For example, the front point could be the nose
 and the back point could be the tail base
   		 	 __QQ
  			(_)_"> front point
-back point _)     
+            back point _)     
 
 Arguments:
 - fx    (float): x-coordinate of the front point
@@ -58,16 +58,16 @@ Returns:
 		if the front point is further to the right than the back point
 		and if the front point is higher than the back 
 		 
-  		       	  pi/2
-					^   front point
-					|  /
-   					| /
-      				|/ back point
+  		       pi/2
+			^   front point
+			|  /
+   			| /
+      			|/ back point
 	       pi <-----|-----> 0
-    				|
-    				|
-       				|
-	  				v
+    			|
+    			|
+       			|
+	  		v
      		      3pi/4
 	     	"""
 		length = fx - xint
@@ -79,16 +79,16 @@ Returns:
 		and if the front point is higher than the back point 
 
   
-		          pi/2
-					^  front point
-					|  \
-   					|   \
-      				|    \ back point
+		       pi/2
+			^  front point
+			|  \
+   			|   \
+      			|    \ back point
 	       pi <-----|-----> 0
-    				|
-    				|
-       				|
-	  				v
+    			|
+    			|
+       			|
+	  		v
      		      3pi/4
   		"""
 		length = xint - fx
@@ -99,16 +99,16 @@ Returns:
 		if the front point is further to the left than the back point
 		and if the front point is lower than the backpoint
 
- 		          pi/2
-					^   back point
-					|  /
-   					| /
-      				|/ front point
+ 		      pi/2
+			^   back point
+			|  /
+   			| /
+      			|/ front point
 	       pi <-----|-----> 0
-    				|
-    				|
-       				|
-	  				v
+    			|
+    			|
+       			|
+	  	        v
      		      3pi/4
   
   		"""
@@ -120,16 +120,16 @@ Returns:
 		if the front point is further to the right than the back point
 		and if the front point is lower than the back point
  
-		           pi/2
-					^  back point
-					|  \
-   					|	\
-      				|    \ front point
+		      pi/2
+			^  back point
+			|  \
+   			|   \
+      			|    \ front point
 	       pi <-----|-----> 0
-    				|
-    				|
-       				|
-	  				v
+    			|
+    			|
+       			|
+	  		v
      		      3pi/4
   		"""
 		length = xint - bx

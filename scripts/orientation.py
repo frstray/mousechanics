@@ -37,15 +37,11 @@ Arguments:
 - fy    (float): y-coordinate of the front point
 - bx    (float): x-coordinate of the back point 
 - by    (float): y-coordinate of the back point
-- y_max (float): maximum y-coordinate 
-
-Returns: 
-- theta (float): angle of orientation in radians 
 """
 	# the math library is used here for its inverse tangent function
 	# and to generate nan values in the case of invalid coordinates
 	import math 
-
+  
 	# there is a line going from the front point to the back point
 	# get the slope of the line
 	slope = (fy - by) / (fx - bx)

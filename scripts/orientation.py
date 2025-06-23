@@ -3,7 +3,7 @@ Forest Ray
 June 3, 2025
 """
 
-def orientation_vertical(fx, fy, bx, by, b_max):
+def orientation_vertical(fx, fy, bx, by, y_max):
 """
 Calculates the orientation of the mouse with respect to the entire arena.
 If the mouse was pointing directly right, with the front more right than the back,

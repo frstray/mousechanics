@@ -4,40 +4,40 @@ June 3, 2025
 """
 
 def orientation_vertical(fx, fy, bx, by, y_max):
-"""
-Calculates the orientation of the mouse with respect to the entire arena.
-If the mouse was pointing directly right, with the front more right than the back,
-the orientation would be 0. Orientation goes from 0 to 2pi as the mouse turns counter clockwise. 
-
-		      pi/2
-			^
-		 	|
-   			|
-      			|
-	       pi <-----|-----> 0
-    			|
-    			|
-       			|
-	  		v
-     		      3pi/4
-
-- mouse pointing front first to right: angle = 0
-- mouse pointing front first up:       angle = pi/2
-- mouse pointing front first left:     angle = pi
-- mouse pointing front first down:     angle = 3pi/2
-
-For example, the front point could be the nose
-and the back point could be the tail base
-  		 	 __QQ
- 			(_)_"> front point
-            back point _)     
-
-Arguments:
-- fx    (float): x-coordinate of the front point
-- fy    (float): y-coordinate of the front point
-- bx    (float): x-coordinate of the back point 
-- by    (float): y-coordinate of the back point
-"""
+	"""
+	Calculates the orientation of the mouse with respect to the entire arena.
+	If the mouse was pointing directly right, with the front more right than the back,
+	the orientation would be 0. Orientation goes from 0 to 2pi as the mouse turns counter clockwise. 
+	
+			      pi/2
+				^
+			 	|
+	   			|
+	      			|
+		       pi <-----|-----> 0
+	    			|
+	    			|
+	       			|
+		  		v
+	     		      3pi/4
+	
+	- mouse pointing front first to right: angle = 0
+	- mouse pointing front first up:       angle = pi/2
+	- mouse pointing front first left:     angle = pi
+	- mouse pointing front first down:     angle = 3pi/2
+	
+	For example, the front point could be the nose
+	and the back point could be the tail base
+	  		 	 __QQ
+	 			(_)_"> front point
+	            back point _)     
+	
+	Arguments:
+	- fx    (float): x-coordinate of the front point
+	- fy    (float): y-coordinate of the front point
+	- bx    (float): x-coordinate of the back point 
+	- by    (float): y-coordinate of the back point
+	"""
 	# the math library is used here for its inverse tangent function
 	# and to generate nan values in the case of invalid coordinates
 	import math 
@@ -156,6 +156,8 @@ def orientation_horizontal(rx, ry, lx, ly, y_max):
         - xint  (float): x-intercept of the line between the two selected points
 	"""
 
+	import math
+	
 	# Get the slope of the line between the right point and the back point
 	slope = (ry - ly) / (rx - lx)
 	# get the x-intercept of the line

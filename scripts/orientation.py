@@ -7,11 +7,28 @@ Created on Wed Jul  2 09:07:03 2025
 def orientation_vertical(fx, fy, bx, by, y_max):
     import math
     
-    # get the slope of the line
-    # going from front to back
-    slope = (fy - by) / (fx - bx)
-    # get the x-intercept
-    xint = ((y_max-fy) / slope) + fx
+    try:
+        # get the slope of the line
+        # going from front to back
+        slope = (fy - by) / (fx - bx)
+        # get the x-intercept
+        xint = ((y_max-fy) / slope) + fx
+    except ZeroDivisionError:
+        # if the slop is zero, then 
+        # the mouse is either facing 0
+        # or 180 degrees 
+        
+        if (fx > bx):
+            # if fx more right than bx
+            theta = 0
+        elif (fx < bx):
+            # if fx more left than bx
+            theta = math.pi
+        else:
+            # if an unknown error occurs
+            # return a nan value 
+            theta = math.nan
+        
     
     # calculate the angle
     if ((fx > bx) and (fy < by)):

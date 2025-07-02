@@ -5,6 +5,8 @@ Created on Wed Jul  2 09:52:42 2025
 @author: Forest
 """
 def calculate_velocity(time, x_position, y_position):
+    import math
+    
     # create lists for storing values
     times = []
     velocities = []
@@ -22,12 +24,17 @@ def calculate_velocity(time, x_position, y_position):
         delta_y = y_2 - y_1
         delta_t = time_2 - time_1
 
-        # calculate velocity
-        distance = ((delta_x**2)+(delta_y**2))**(1/2)
-        velocities.append(distance/delta_t)
-        times.append(time_2)
+        
+        try:
+            # calculate velocity
+            distance = ((delta_x**2)+(delta_y**2))**(1/2)
+            velocities.append(distance/delta_t)
+            times.append(time_2)
+        except:
+            velocities.append(math.nan)
+            times.append(math.nan)
 
-        return velocities, times 
+    return velocities, times 
 
 def bin_velocities(time_window, velocities, times):
     

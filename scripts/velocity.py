@@ -1,95 +1,70 @@
+# -*- coding: utf-8 -*-
 """
-velocity.py
+Created on Wed Jul  2 09:52:42 2025
 
-Forest Ray
-May 13, 2025
-
-This module contains functions related to velocity computations in Mousechanics 
+@author: Forest
 """
-
-
 def calculate_velocity(time, x_position, y_position):
-	"""
-	Calculates velocity for a list of coordinates defined by x position, y position, and time
+    # create lists for storing values
+    times = []
+    velocities = []
+    
+    for i in range(0, len(time)-1):
+        time_1 = time[i]
+        time_2 = time[i+1]
+        x_1 = x_position[i]
+        x_2 = x_position[i+1]
+        y_1 = y_position[i]
+        y_2 = y_position[i+1]
+        
+        # calculate changes in position and time
+        delta_x = x_2 - x_1
+        delta_y = y_2 - y_1
+        delta_t = time_2 - time_1
 
-	Arguments:
-	- time       (list of floats): contains the time at which a coordinate is recorded 
-	- x_position (list of floats): x-values for each coordinate
-	- y_position (list of floats): y_values for each coordinate 
+        # calculate velocity
+        distance = ((delta_x**2)+(delta_y**2))**(1/2)
+        velocities.append(distance/delta_t)
+        times.append(time_2)
 
-	Returns: 
-	- velocities (list of floats): list containing the average velocity between each pair of consecutive positions
-	- times      (list of floats): the times that correspond to each velocity point
-	"""
+        return velocities, times 
 
-	# create lists to store the time and velocity values that will be returned 
-	times = []
-	velocities = []
-
-	for i in range(0, len(time)-1):
-		time_1 = time[i] 
-		time_2 = time[i+1];
-		x_1 = x[i]; x_2 = x[i+1]
-		y_1 = y[i]; y_2 = y[i+1]
-
-		# Calculate deltas
-		delta_x = x2-x1 # change in x position
-		delta_y = y2 - y1 # change in y position 
-		deta_t = time_2 - time_1 # change in time 
-
-		# velocity is change in position over change in time
-		distance = ((delta_x**2) + (delta_y**2))**(1/2) # distance formula 
-		
-		velocities.append(distance/delta_t)
-		times.append(time_2)
-
-		return velocities, times
-
-def average_velocity(time_window, velocities, times):
-	"""
-	Calculates the average velocity for each user specified time window 
-
-	Arguments:
-	- time_window (integer):        size of the time window in seconds
-	- velocities  (list of floats): velocities for each time point
-	- times       (list of floats): time at which each velocity measurement occurs 
-	"""
-
-	num_data_points = len(velocities)
-	if (num_data_points != len(times)):
-		print("Error: the number of velocity data points does not equal the number of corresponding time data points")
-	
-	# if the lists passed to the function are an appropriate size, proceed
-	elif (num_data_points == len(times)):
-		num_windows = int((int(times[-1]))/time_window) # max time / size of window (both in seconds) = # windows
-
-	# these lists will hold the average velocity in each time window and the time corresponding to that average
-    	# the last time stamp in the time window is considered to be the time corresponding to the average velocity 
-    	average_velocities = []
-    	time_for_average = []
-
-
-    	# get velocity and time points within each defined time range 
-    	for i in range(0, (num_windows-1)):
-    		# set the boundaries for each set of averages
-    		min_time_bound = i*time_window
-    		max_time_bound = (i+1)*time_window 
-
-    		# lists that store the values within the boundaries for each loop
-    		loop_time = []
-    		loop_velocity = []
-
-    		for ii in range(0, range(velocities)):
-    			if((times[ii]) >= min_bound) and (times[ii] < max_bound):
-    				loop_time.append(times[ii])
-    				loop_velocity.append(velocities[ii])
-
-    		average_velocities.append(loop_velocity)
-    		time_for_average.append(loop_time)
-
-    	return average_velocities, time_for_average  
-
+def bin_velocities(time_window, velocities, times):
+    
+    # see how many velocity data points we have 
+    num_data_points = len(velocities)        
+        
+    # number of velocity points should equal number time points
+    if (num_data_points != len(times)):
+        print("Error: Velocity and Time point number do not match")
+        
+    elif (num_data_points == len(times)):
+        # max time / window size = number of windows
+        num_windows = int((int(times[-1]))/time_window)
+        
+        # lists to hold values for each window
+        binned_velocities = []
+        binned_times = []
+        
+        # get velocity in each window
+        for i in range(0, (num_windows-1)):
+            # set time boundaries for window
+            min_time_bound = i*time_window
+            max_time_bound = (i+1)*time_window
+            
+            # store values in each loop
+            loop_time = []
+            loop_velocity = []
+            
+            for ii in range(0, len(velocities)):
+                if((times[ii] > min_time_bound) and (times[ii] < max_time_bound)):
+                    loop_time.append(times[ii])
+                    loop_velocity.append(velocities[ii])
+                    
+            binned_velocities.append(loop_velocity)
+            binned_times.append(binned_times)
+        
+        return binned_velocities, binned_times
     else:
-    	print("An unknown error has occured while calling average_velocity")
-
-
+        print("bin_velocities - An unknown error has occured.")
+        return -1, -1
